@@ -21,9 +21,6 @@ public class Department {
     @Column(name = "salary")
     private Long salary;
 
-//    @OneToMany(mappedBy = "position_department", cascade = CascadeType.PERSIST)
-//    private List<Position> department_position;
-
     @OneToMany(mappedBy = "employee_department", cascade = CascadeType.PERSIST)
     private List<Employee> department_employee;
 }

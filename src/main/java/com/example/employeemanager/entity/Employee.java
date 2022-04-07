@@ -25,9 +25,11 @@ public class Employee {
     private String address;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
+//    @JoinColumn(name = "department_id")
     private Department employee_department;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
+//    @JoinColumn(name = "position_id")
     private Position employee_position;
 
 

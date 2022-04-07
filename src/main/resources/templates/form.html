@@ -42,7 +42,7 @@
 </nav>
 
 <div style="width: 1000px; margin-left: auto; margin-right: auto">
-    <form th:action="@{/employee/edit}" method="post" th:object="${employee}">
+    <form th:action="@{/employee/save}" method="post" th:object="${employee}">
         <div class="form-group col-md-6">
             <label for="id"></label>
             <input type="hidden" class="form-control" id="id" placeholder="id" th:field="*{id}">
@@ -55,7 +55,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="inputPassword4">age</label>
-                <input type="text" class="form-control" id="inputPassword4" placeholder="Password" th:field="*{age}">
+                <input type="text" class="form-control" id="inputPassword4" placeholder="Age" th:field="*{age}">
             </div>
         </div>
 
@@ -71,14 +71,21 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="Department">Department</label>
-                <input type="text" class="form-control" id="Department" placeholder="Email" th:field="*{employee_department.name}">
-                <form action=""></form>
+            <div class="form-group col-md-4">
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control" id="phone" placeholder="Please input Phone" th:field="*{phone}">
             </div>
-            <div class="form-group col-md-6">
-                <label for="Position">Position</label>
-                <input type="text" class="form-control" id="Position" placeholder="Position" th:field="*{employee_position.name}">
+            <div class="form-group col-md-4">
+                <label>Department</label>
+                <select class="custom-select" name="depart_id" >
+                    <option th:each="department: ${listDepartment}" th:value="${department.id}" th:utext="${department.name}">One</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label >Position</label>
+                <select class="custom-select" name="pos_id">
+                    <option th:each="position: ${listPosition}" th:value="${position.id}" th:utext="${position.name}">One</option>
+                </select>
             </div>
         </div>
 

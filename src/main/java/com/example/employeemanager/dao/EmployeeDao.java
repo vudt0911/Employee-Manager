@@ -83,6 +83,8 @@ public class EmployeeDao {
         return list;
     }
 
+
+
     public Department sale(){
         Session session = ConnectionDB.getSessionFactory().openSession();
         return session.find(Department.class, 1);
@@ -116,8 +118,8 @@ public class EmployeeDao {
 
         //update employee
 //        Department department = session.find(Department.class, 2);
-//        Position position = session.find(Position.class, 2);
-//        Employee employee = new Employee(1,"vu-update", 22, "vu@gmail.com", "0987656787","HN", department, position);
+//        Position position = session.find(Position.class, 1);
+//        Employee employee = new Employee(1,"vu-edit", 22, "vu@gmail.com", "0987656787","HN", department, position);
 //        employeeDao.updateEmployee(employee);
 
         // delete employee

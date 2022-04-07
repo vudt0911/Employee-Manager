@@ -19,23 +19,22 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" th:href="@{/employee/all}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Add New</a>
+                <a class="nav-link" th:href="@{/employee/add}">Add New</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
+                    Department
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                    <a class="dropdown-item" th:each="department : ${listDepartment}" th:href="|@{/employee/department/}${department.id}|" th:utext="${department.name}">Action</a>
                 </div>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0" th:action="@{/employee/search}" method="post">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
@@ -48,6 +47,7 @@
         <th scope="col">Name</th>
         <th scope="col">Age</th>
         <th scope="col">Email</th>
+        <th scope="col">Phone</th>
         <th scope="col">Address</th>
         <th scope="col">Department</th>
         <th scope="col">Position</th>
@@ -61,9 +61,10 @@
         <td th:text="${employee.name}"></td>
         <td th:text="${employee.age}"></td>
         <td th:text="${employee.email}"></td>
+        <td th:text="${employee.phone}"></td>
         <td th:text="${employee.address}"></td>
-        <td th:text="${employee.employee_department.name}"></td>
-        <td th:text="${employee.employee_position.name}"></td>
+        <td th:text="${employee.employee_department==null ? '': employee.employee_department.name}"></td>
+        <td th:text="${employee.employee_position==null ? '': employee.employee_position.name}"></td>
         <td><a th:href="@{/employee/edit/{id}(id=${employee.id})}">Edit</a></td>
         <td><a th:href="@{/employee/delete/{id}(id=${employee.id})}">Delete</a></td>
     </tr>
